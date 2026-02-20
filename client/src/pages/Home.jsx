@@ -5,8 +5,7 @@ export default function Home() {
   return (
     <div className="bg-[#0b1220] text-white overflow-hidden">
       {/* ================= HERO SECTION ================= */}
-      <section className="relative min-h-screen flex items-center justify-center text-center px-4 sm:px-6">
-        {/* Background Image */}
+      <section className="relative min-h-screen flex items-center justify-center text-center px-6">
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
@@ -14,22 +13,23 @@ export default function Home() {
               "url('https://images.unsplash.com/photo-1509395176047-4a66953fd231?q=80&w=2070&auto=format&fit=crop')",
           }}
         />
-
-        {/* Overlay */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/70 to-[#0b1220]" />
 
-        {/* Navigation */}
+        {/* ================= NAVIGATION ================= */}
         <div
-          className="absolute top-4 left-1/2 -translate-x-1/2 w-[92%] max-w-6xl 
-                  bg-white/10 backdrop-blur-xl border border-white/10 
-                  rounded-xl px-4 sm:px-6 py-3 flex items-center justify-between shadow-xl"
+          className="absolute top-6 left-1/2 -translate-x-1/2 w-[95%] max-w-7xl 
+  bg-white/10 backdrop-blur-xl border border-white/10 
+  rounded-2xl px-6 py-4 flex items-center justify-between shadow-2xl z-20"
         >
-          <h1 className="font-semibold tracking-wide text-base sm:text-lg">
-            <Link to="/">Peraton Inc.</Link>
+          {/* Logo */}
+          <h1 className="font-semibold tracking-wide text-lg md:text-xl">
+            <Link to="/" className="hover:text-blue-400 transition">
+              Peraton Inc.
+            </Link>
           </h1>
 
           {/* Desktop Menu */}
-          <div className="hidden md:flex space-x-8 text-sm text-gray-200">
+          <div className="hidden md:flex space-x-10 text-sm text-gray-200 font-medium">
             <Link to="/" className="hover:text-white transition">
               Home
             </Link>
@@ -39,186 +39,233 @@ export default function Home() {
             <Link to="/contact" className="hover:text-white transition">
               Contact
             </Link>
+            <Link to="/services" className="hover:text-white transition">
+              Services
+            </Link>
           </div>
 
+          {/* CTA */}
           <Link
             to="/job-application"
-            className="bg-white text-black text-xs sm:text-sm 
-                 font-medium px-4 sm:px-5 py-2 rounded-lg 
-                 hover:bg-gray-200 transition"
+            className="bg-blue-600 hover:bg-blue-700 
+    px-5 py-2.5 rounded-lg text-sm font-semibold transition shadow-lg"
           >
-            Apply
+            Apply Now
           </Link>
         </div>
-
-        {/* Hero Content */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="relative z-10 max-w-4xl mt-24 md:mt-0"
-        >
+        <div className="relative z-10 max-w-5xl">
           <h1
-            className="text-3xl sm:text-4xl md:text-6xl 
-                   font-bold leading-tight mb-6"
+            className="text-5xl md:text-6xl font-bold leading-tight 
+               bg-gradient-to-r from-blue-400 via-white to-purple-400 
+               bg-clip-text text-transparent"
           >
-            Securing Tomorrow’s{" "}
-            <span className="text-blue-400">Critical Missions</span>
+            Powering Secure Digital Infrastructure for{" "}
+            <span className="text-blue-400">Technology & Operations</span>
           </h1>
 
-          <p
-            className="text-base sm:text-lg md:text-xl 
-                  text-gray-300 mb-8 max-w-2xl mx-auto"
-          >
-            Advanced cybersecurity, AI, and defense technologies powering
-            national security and global intelligence operations.
+          <p className="text-lg md:text-xl text-gray-300 mb-8 max-w-3xl mx-auto">
+            Peraton Inc. delivers advanced technology solutions, high-volume
+            secure data entry systems, and intelligent customer operations
+            platforms that support government and enterprise missions worldwide.
           </p>
 
           <Link
             to="/job-application"
-            className="inline-block bg-blue-600 hover:bg-blue-700 
-                 px-6 sm:px-8 py-3 sm:py-4 
-                 text-sm sm:text-base 
-                 rounded-lg font-semibold transition shadow-xl"
+            className="bg-blue-600 px-8 py-4 rounded-lg font-semibold
+shadow-[0_0_25px_rgba(59,130,246,0.6)]
+hover:shadow-[0_0_35px_rgba(59,130,246,0.9)]
+transition"
           >
-            Join Our Mission
+            Join Our Growing Team
           </Link>
-        </motion.div>
+        </div>
       </section>
 
-      {/* ================= WHAT WE DO ================= */}
-      <section className="py-16 sm:py-24 px-4 sm:px-6 max-w-7xl mx-auto">
-        <div className="text-center mb-12 sm:mb-16">
-          <h2 className="text-2xl sm:text-4xl font-bold mb-4">
-            Our Capabilities
+      {/* ================= TECHNOLOGY SECTION ================= */}
+      <section className="py-24 px-6 max-w-7xl mx-auto">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl font-bold mb-4">
+            Technology-Driven Foundation
           </h2>
-          <p className="text-gray-400 max-w-3xl mx-auto text-sm sm:text-base">
-            Delivering mission-critical systems across cybersecurity, AI,
-            defense modernization, and secure cloud infrastructure.
+          <p className="text-gray-400 max-w-3xl mx-auto">
+            We build scalable systems powered by AI, automation, secure cloud
+            infrastructure, and real-time analytics to streamline
+            mission-critical workflows.
           </p>
         </div>
 
-        <div className="grid sm:grid-cols-1 md:grid-cols-3 gap-6 sm:gap-10">
-          {[
-            {
-              title: "Cybersecurity",
-              img: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070&auto=format&fit=crop",
-            },
-            {
-              title: "Artificial Intelligence",
-              img: "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=2070&auto=format&fit=crop",
-            },
-            {
-              title: "Defense Systems",
-              img: "https://images.unsplash.com/photo-1581092918484-8313f9b5e0b2?q=80&w=2070&auto=format&fit=crop",
-            },
-          ].map((item, index) => (
-            <motion.div
-              key={index}
-              whileHover={{ y: -8 }}
-              className="bg-white/5 backdrop-blur-lg rounded-2xl overflow-hidden shadow-lg border border-white/10"
-            >
-              <img
-                src={item.img}
-                className="h-44 sm:h-56 w-full object-cover"
-              />
-              <div className="p-5 sm:p-6">
-                <h3 className="text-lg sm:text-xl font-semibold mb-2 sm:mb-3">
-                  {item.title}
-                </h3>
-                <p className="text-gray-400 text-sm sm:text-base">
-                  Cutting-edge innovation built for secure, scalable, and
-                  resilient national operations.
-                </p>
-              </div>
-            </motion.div>
-          ))}
+        <div className="grid md:grid-cols-3 gap-10">
+          <div className="bg-white/5 p-8 rounded-2xl border border-white/10">
+            <h3 className="text-xl font-semibold mb-4 text-blue-400">
+              Cloud Infrastructure
+            </h3>
+            <p className="text-gray-400">
+              Secure, compliant cloud architecture supporting millions of
+              transactions daily with high availability and redundancy.
+            </p>
+          </div>
+
+          <div className="bg-white/5 p-8 rounded-2xl border border-white/10">
+            <h3 className="text-xl font-semibold mb-4 text-blue-400">
+              AI & Automation
+            </h3>
+            <p className="text-gray-400">
+              Intelligent automation pipelines reducing operational workload,
+              increasing speed, and eliminating human error.
+            </p>
+          </div>
+
+          <div className="bg-white/5 p-8 rounded-2xl border border-white/10">
+            <h3 className="text-xl font-semibold mb-4 text-blue-400">
+              Cyber Defense
+            </h3>
+            <p className="text-gray-400">
+              Multi-layered cybersecurity architecture protecting sensitive
+              government and enterprise data.
+            </p>
+          </div>
         </div>
       </section>
 
-      {/* ================= CEO SECTION ================= */}
-      <section className="bg-[#111827] py-16 sm:py-24 px-4 sm:px-6">
-        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-10 sm:gap-16 text-center md:text-left">
-          <img
-            src="https://randomuser.me/api/portraits/men/45.jpg"
-            className="w-48 sm:w-72 md:w-96 rounded-2xl shadow-2xl"
-          />
-
+      {/* ================= DATA ENTRY & OPERATIONS ================= */}
+      <section className="bg-[#111827] py-24 px-6">
+        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
           <div>
-            <h2 className="text-2xl sm:text-4xl font-bold mb-4 sm:mb-6">
-              Leadership That Drives Innovation
+            <h2 className="text-4xl font-bold mb-6">
+              High-Volume Secure Data Entry Operations
             </h2>
-            <p className="text-gray-400 mb-4 text-sm sm:text-base">
-              Under visionary leadership, we continue to expand secure digital
-              capabilities while delivering trusted mission outcomes globally.
+            <p className="text-gray-400 mb-6">
+              Our structured data entry division handles sensitive
+              documentation, digital records management, compliance processing,
+              and secure information indexing for government and enterprise
+              clients.
             </p>
-            <p className="text-blue-400 font-semibold text-sm sm:text-base">
-              — Chief Executive Officer
+
+            <ul className="space-y-4 text-gray-300">
+              <li>• Secure document digitization & indexing</li>
+              <li>• Compliance-driven data validation workflows</li>
+              <li>• Automated verification systems</li>
+              <li>• Real-time analytics dashboards</li>
+            </ul>
+          </div>
+
+          <img
+            src="https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&w=2070&auto=format&fit=crop"
+            className="rounded-2xl shadow-2xl"
+          />
+        </div>
+      </section>
+
+      {/* ================= CUSTOMER OPERATIONS ================= */}
+      <section className="py-24 px-6 max-w-7xl mx-auto">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl font-bold mb-4">
+            Intelligent Customer Operations
+          </h2>
+          <p className="text-gray-400 max-w-3xl mx-auto">
+            Our customer operations team leverages advanced CRM systems, AI
+            support tools, and secure communication frameworks to deliver
+            efficient, responsive service.
+          </p>
+        </div>
+
+        <div className="grid md:grid-cols-3 gap-10">
+          <div className="bg-white/5 p-8 rounded-2xl border border-white/10">
+            <h3 className="text-lg font-semibold mb-3 text-blue-400">
+              24/7 Support Systems
+            </h3>
+            <p className="text-gray-400">
+              Continuous monitoring and support channels ensuring seamless
+              communication.
+            </p>
+          </div>
+
+          <div className="bg-white/5 p-8 rounded-2xl border border-white/10">
+            <h3 className="text-lg font-semibold mb-3 text-blue-400">
+              CRM Integration
+            </h3>
+            <p className="text-gray-400">
+              Centralized platforms managing customer data securely and
+              efficiently.
+            </p>
+          </div>
+
+          <div className="bg-white/5 p-8 rounded-2xl border border-white/10">
+            <h3 className="text-lg font-semibold mb-3 text-blue-400">
+              Performance Analytics
+            </h3>
+            <p className="text-gray-400">
+              Data-driven insights improving service quality and response times.
             </p>
           </div>
         </div>
       </section>
 
-      {/* ================= TEAM SECTION ================= */}
-      <section className="py-16 sm:py-24 px-4 sm:px-6 max-w-7xl mx-auto text-center">
-        <h2 className="text-2xl sm:text-5xl font-bold mb-12 sm:mb-16">
-          Executive Team
-        </h2>
-
-        <div className="grid sm:grid-cols-2 md:grid-cols-1 gap-6 sm:gap-10">
+      {/* ================= IMPACT STATS ================= */}
+      <section className="bg-[#111827] py-20 px-6">
+        <div className="max-w-6xl mx-auto grid md:grid-cols-4 gap-10 text-center">
           {[
-            {
-              name: "Michael Carter",
-              role: "Chief Technology Officer",
-              img: "https://randomuser.me/api/portraits/men/32.jpg",
-            },
-            {
-              name: "Sarah Mitchell",
-              role: "Director of Cyber Ops",
-              img: "https://randomuser.me/api/portraits/women/44.jpg",
-            },
-            {
-              name: "Daniel Brooks",
-              role: "Head of AI Research",
-              img: "https://randomuser.me/api/portraits/men/67.jpg",
-            },
-          ].map((person, index) => (
-            <motion.div
-              key={index}
-              whileHover={{ scale: 1.05 }}
-              className="bg-white/5 border border-white/10 p-6 sm:p-8 rounded-2xl backdrop-blur-md shadow-lg"
-            >
-              <img
-                src={person.img}
-                className="w-24 sm:w-32 h-24 sm:h-32 mx-auto rounded-full mb-4 sm:mb-6 border-4 border-blue-500"
-              />
-              <h3 className="text-lg sm:text-2xl font-semibold">
-                {person.name}
+            { number: "10M+", label: "Records Processed" },
+            { number: "99.99%", label: "System Uptime" },
+            { number: "24/7", label: "Operations Monitoring" },
+            { number: "500+", label: "Tech Professionals" },
+          ].map((stat, index) => (
+            <div key={index}>
+              <h3 className="text-4xl font-bold text-blue-400 mb-2">
+                {stat.number}
               </h3>
-              <p className="text-gray-400 text-xs sm:text-sm mt-2">
-                {person.role}
-              </p>
-            </motion.div>
+              <p className="text-gray-400">{stat.label}</p>
+            </div>
           ))}
         </div>
       </section>
 
-      {/* ================= FOOTER ================= */}
-      <footer className="bg-black py-10 sm:py-12 px-4 sm:px-6 text-gray-400">
-        <div className="max-w-7xl mx-auto grid gap-8 sm:grid-cols-2 md:grid-cols-3 text-sm sm:text-base">
+      {/* ================= CTA SECTION ================= */}
+      <section className="py-24 text-center px-6">
+        <h2 className="text-4xl font-bold mb-6">
+          Build the Future of Secure Operations With Us
+        </h2>
+        <p className="text-gray-400 mb-8 max-w-2xl mx-auto">
+          We are expanding across technology, data processing, and customer
+          operations. Join a company that blends innovation with mission impact.
+        </p>
+        <Link
+          to="/job-application"
+          className="bg-blue-600 hover:bg-blue-700 px-10 py-4 rounded-lg font-semibold transition shadow-xl"
+        >
+          Apply Now
+        </Link>
+      </section>
+
+      {/* ================= PREMIUM FOOTER ================= */}
+      <footer className="bg-black pt-16 pb-10 px-6 border-t border-white/10">
+        <div className="max-w-7xl mx-auto grid md:grid-cols-4 gap-10">
           <div>
-            <h3 className="text-white font-semibold mb-3">Peraton Inc</h3>
-            <p>Mission-critical solutions protecting our nation’s future.</p>
+            <h3 className="text-white text-xl font-bold mb-4">Peraton Inc.</h3>
+            <p className="text-gray-400 text-sm">
+              Advancing technology, secure data operations, and intelligent
+              customer solutions for tomorrow’s digital landscape.
+            </p>
           </div>
 
           <div>
-            <h4 className="text-white font-semibold mb-3">Quick Links</h4>
-            <ul className="space-y-2">
+            <h4 className="text-white font-semibold mb-4">Services</h4>
+            <ul className="space-y-2 text-gray-400 text-sm">
+              <li>Cloud Infrastructure</li>
+              <li>Data Entry Operations</li>
+              <li>Customer Support Systems</li>
+              <li>Cybersecurity</li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="text-white font-semibold mb-4">Company</h4>
+            <ul className="space-y-2 text-gray-400 text-sm">
               <li>
                 <Link to="/">Home</Link>
               </li>
               <li>
-                <Link to="/job-application">Careers</Link>
+                <Link to="/careers">Careers</Link>
               </li>
               <li>
                 <Link to="/contact">Contact</Link>
@@ -227,8 +274,8 @@ export default function Home() {
           </div>
 
           <div>
-            <h4 className="text-white font-semibold mb-3">Headquarters</h4>
-            <p>
+            <h4 className="text-white font-semibold mb-4">Contact</h4>
+            <p className="text-gray-400 text-sm">
               123 Defense Parkway
               <br />
               Washington, DC
@@ -238,8 +285,9 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="text-center mt-8 text-xs sm:text-sm text-gray-600">
-          © {new Date().getFullYear()} Peraton Inc. All rights reserved.
+        <div className="mt-12 border-t border-white/10 pt-6 text-center text-gray-500 text-sm">
+          © {new Date().getFullYear()} Peraton Inc. | Engineered for Security.
+          Powered by Innovation.
         </div>
       </footer>
     </div>
