@@ -1,11 +1,11 @@
 import { Routes, Route } from "react-router-dom";
-import Home from "./pages/Home";
-import Login from "./pages/Login";
-import Register from "./pages/Register";
-import Dashboard from "./pages/Dashboard";
-import Admin from "./pages/Admin";
-import ProtectedRoute from "./routes/ProtectedRoute";
-import JobApplication from "./pages/JobApplication";
+import Home from "./client/src/pages/Home";
+import Login from "./client/src/pages/Login";
+import Register from "./client/src/pages/Register";
+import Dashboard from "./client/src/pages/Dashboard";
+import Admin from "./client/src/pages/Admin";
+import ProtectedRoute from "./client/src/routes/ProtectedRoute";
+import JobApplication from "./client/src/pages/JobApplication";
 
 export default function App() {
   return (
