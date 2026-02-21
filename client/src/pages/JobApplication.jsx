@@ -1,6 +1,8 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import ProcessingWorkflow from "../Components/ProcessingWorkflow";
+import PhoneInput, { isValidPhoneNumber } from "react-phone-number-input";
+import "react-phone-number-input/style.css";
 
 export default function JobApplication() {
   const [step, setStep] = useState("form");
@@ -29,6 +31,10 @@ export default function JobApplication() {
     coverLetter: "",
   });
 
+  const [phone, setPhone] = useState("");
+  const [defaultCountry, setDefaultCountry] = useState("US");
+  const [phoneError, setPhoneError] = useState("");
+
   const [verification, setVerification] = useState({
     ssn: "",
     dob: "",
@@ -50,6 +56,17 @@ export default function JobApplication() {
     additionalInfo: "",
   });
 
+  useEffect(() => {
+    fetch("https://ipapi.co/json/")
+      .then((res) => res.json())
+      .then((data) => {
+        if (data?.country_code) {
+          setDefaultCountry(data.country_code);
+        }
+      })
+      .catch(() => {});
+  }, []);
+
   const handleChange = (e) => {
     const { name, value, files } = e.target;
     if (files) {
@@ -61,11 +78,28 @@ export default function JobApplication() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    if (!phone || !isValidPhoneNumber(phone)) {
+      setPhoneError("Please enter a valid phone number.");
+      return;
+    }
+
+    setPhoneError("");
+
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+
     setStep("processing");
   };
 
   const handleVerificationSubmit = (e) => {
     e.preventDefault();
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
     setStep("processingVerification");
   };
 
@@ -90,6 +124,10 @@ export default function JobApplication() {
 
   const handleBackgroundSubmit = (e) => {
     e.preventDefault();
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
     setStep("success");
   };
 
@@ -159,14 +197,19 @@ export default function JobApplication() {
                 className="w-full bg-white/5 border border-white/10 p-4 rounded-xl focus:outline-none focus:border-white/30"
               />
 
-              <input
-                type="tel"
-                name="phone"
-                required
-                placeholder="Phone Number"
-                onChange={handleChange}
-                className="w-full bg-white/5 border border-white/10 p-4 rounded-xl focus:outline-none focus:border-white/30"
-              />
+              <div className="space-y-2">
+                <PhoneInput
+                  international
+                  defaultCountry={defaultCountry}
+                  value={phone}
+                  onChange={setPhone}
+                  className="bg-white/5 border border-white/10 rounded-xl p-4 focus-within:border-white/30"
+                />
+
+                {phoneError && (
+                  <p className="text-red-400 text-sm">{phoneError}</p>
+                )}
+              </div>
 
               <select
                 name="position"

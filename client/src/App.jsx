@@ -1,5 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import ScrollToTop from "./Components/ScrollToTop";
+import "react-phone-number-input/style.css";
 
 import Home from "./pages/Home";
 import Login from "./pages/Login";
