@@ -1,8 +1,10 @@
 import { Link, Outlet, useLocation } from "react-router-dom";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import { useState } from "react";
 
 export default function Layout() {
   const location = useLocation();
+  const [menuOpen, setMenuOpen] = useState(false);
 
   return (
     <div className="bg-[#0b1220] text-white min-h-screen flex flex-col relative overflow-hidden">
@@ -19,38 +21,110 @@ export default function Layout() {
       </div>
 
       {/* ================= NAVBAR ================= */}
-      <nav className="sticky top-0 z-50 backdrop-blur-xl bg-white/5 border-b border-white/10">
-        <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-          {/* Logo */}
-          <Link to="/" className="text-xl font-bold tracking-wide">
+      <div
+        className="absolute top-6 left-1/2 -translate-x-1/2 w-[95%] max-w-7xl 
+              bg-[#111c2d]/95 backdrop-blur-md
+            border border-white/5
+            rounded-xl
+            shadow-lg px-5 py-4 flex items-center justify-between shadow-2xl z-20"
+      >
+        {/* Logo */}
+        <h1 className="font-semibold tracking-wide text-lg md:text-xl">
+          <Link to="/" className="hover:text-blue-400 transition">
             Peraton Inc.
           </Link>
+        </h1>
 
-          {/* Links */}
-          <div className="hidden md:flex space-x-8 text-sm text-gray-300 font-medium">
-            <NavLink to="/" current={location.pathname}>
-              Home
-            </NavLink>
-            <NavLink to="/services" current={location.pathname}>
-              Services
-            </NavLink>
-            <NavLink to="/careers" current={location.pathname}>
-              Careers
-            </NavLink>
-            <NavLink to="/contact" current={location.pathname}>
-              Contact
-            </NavLink>
-          </div>
+        {/* Desktop Menu */}
+        <div className="hidden md:flex space-x-8 text-sm text-gray-300 font-medium">
+          <NavLink to="/" current={location.pathname}>
+            Home
+          </NavLink>
+          <NavLink to="/services" current={location.pathname}>
+            Services
+          </NavLink>
+          <NavLink to="/careers" current={location.pathname}>
+            Careers
+          </NavLink>
+          <NavLink to="/contact" current={location.pathname}>
+            Contact
+          </NavLink>
+        </div>
 
-          {/* CTA */}
+        {/* Right side */}
+        <div className="flex items-center gap-3">
+          {/* CTA (desktop) */}
           <Link
             to="/job-application"
-            className="bg-blue-600 hover:bg-blue-700 px-5 py-2 rounded-lg text-sm font-semibold shadow-lg transition"
+            className="hidden md:block bg-[#1f3a5f] hover:bg-[#18314f] 
+      px-5 py-2.5 rounded-lg text-sm font-semibold transition shadow-lg"
           >
             Apply Now
           </Link>
+
+          {/* Hamburger */}
+          <button
+            onClick={() => setMenuOpen(!menuOpen)}
+            className="md:hidden flex flex-col gap-1.5"
+          >
+            <span
+              className={`block w-6 h-0.5 bg-white transition ${
+                menuOpen ? "rotate-45 translate-y-2" : ""
+              }`}
+            />
+            <span
+              className={`block w-6 h-0.5 bg-white transition ${
+                menuOpen ? "opacity-0" : ""
+              }`}
+            />
+            <span
+              className={`block w-6 h-0.5 bg-white transition ${
+                menuOpen ? "-rotate-45 -translate-y-2" : ""
+              }`}
+            />
+          </button>
         </div>
-      </nav>
+      </div>
+
+      <AnimatePresence>
+        {menuOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.18, ease: "easeOut" }}
+            className="md:hidden absolute top-24 left-1/2 -translate-x-1/2 
+      w-[95%] bg-[#0b1220]/95 backdrop-blur-xl border border-white/10 
+      rounded-2xl p-6 z-20 shadow-2xl"
+          >
+            <div className="flex flex-col space-y-5 text-gray-200 font-medium">
+              <Link to="/" onClick={() => setMenuOpen(false)}>
+                Home
+              </Link>
+              <Link to="/careers" onClick={() => setMenuOpen(false)}>
+                Careers
+              </Link>
+              <Link to="/contact" onClick={() => setMenuOpen(false)}>
+                Contact
+              </Link>
+              <Link to="/services" onClick={() => setMenuOpen(false)}>
+                Services
+              </Link>
+
+              <Link
+                to="/job-application"
+                className="hidden md:inline-flex items-center
+  bg-[#1f3a5f] hover:bg-[#18314f]
+  px-4 py-2 rounded-md text-sm font-medium
+  transition-colors duration-200
+  border border-white/10"
+              >
+                Apply
+              </Link>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* ================= PAGE CONTENT ================= */}
       <main className="flex-grow">

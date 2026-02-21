@@ -1,70 +1,62 @@
-import { motion } from "framer-motion";
-
 export default function ContactUs() {
   return (
-    <div className="bg-[#0b1220] text-white min-h-screen">
-      {/* HERO */}
-      <section className="py-24 text-center px-6">
-        <h1 className="text-5xl font-bold mb-6">Contact Our Operations Team</h1>
-        <p className="text-gray-400 max-w-2xl mx-auto">
-          Connect with our technology, data, and customer operations experts to
-          discuss secure and scalable solutions.
-        </p>
+    <div className="bg-[#0b0c0f] text-slate-200 overflow-hidden antialiased">
+      {/* ================= HERO ================= */}
+      <section className="relative min-h-screen flex items-center justify-center text-center px-6 overflow-hidden">
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{
+            backgroundImage:
+              "url('https://images.unsplash.com/photo-1492724441997-5dc865305da7?q=80&w=2070&auto=format&fit=crop')",
+          }}
+        />
+
+        <div className="absolute inset-0 bg-black/75" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(212,175,55,0.12),transparent_55%)]" />
+
+        <div className="relative z-10 max-w-3xl">
+          <h1 className="text-4xl md:text-5xl font-semibold text-white mb-6 tracking-tight">
+            Contact Our
+            <span className="text-[#d4af37]"> Operations Team</span>
+          </h1>
+
+          <p className="text-lg text-slate-300">
+            Connect with our technology and operational experts.
+          </p>
+        </div>
       </section>
 
-      {/* CONTACT GRID */}
-      <section className="py-24 px-6 max-w-6xl mx-auto grid md:grid-cols-2 gap-16">
-        {/* FORM */}
-        <motion.form
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          className="bg-white/5 p-10 rounded-2xl border border-white/10 space-y-6"
-        >
+      {/* ================= CONTACT FORM ================= */}
+      <section className="py-24 px-6 max-w-4xl mx-auto">
+        <form className="bg-[#12141a] p-10 rounded-xl border border-white/5 space-y-6">
           <input
             type="text"
             placeholder="Full Name"
-            className="w-full bg-black/40 p-4 rounded-lg outline-none"
+            className="w-full bg-black/40 p-4 rounded-md outline-none border border-white/5"
           />
+
           <input
             type="email"
             placeholder="Email Address"
-            className="w-full bg-black/40 p-4 rounded-lg outline-none"
+            className="w-full bg-black/40 p-4 rounded-md outline-none border border-white/5"
           />
+
           <textarea
             rows="5"
             placeholder="How can we assist you?"
-            className="w-full bg-black/40 p-4 rounded-lg outline-none"
+            className="w-full bg-black/40 p-4 rounded-md outline-none border border-white/5"
           />
+
           <button
             type="submit"
-            className="w-full bg-blue-600 hover:bg-blue-700 py-4 rounded-lg font-semibold"
+            className="w-full bg-[#d4af37] hover:bg-[#c19b2e]
+            text-black py-4 rounded-md font-semibold
+            shadow-[0_10px_30px_rgba(212,175,55,0.25)]
+            hover:shadow-[0_12px_40px_rgba(212,175,55,0.35)] transition"
           >
             Submit Inquiry
           </button>
-        </motion.form>
-
-        {/* INFO */}
-        <div>
-          <h3 className="text-2xl font-semibold mb-6 text-blue-400">
-            Headquarters
-          </h3>
-          <p className="text-gray-400 mb-6">
-            123 Defense Parkway
-            <br />
-            Washington, DC
-            <br />
-            info@peraton.com
-            <br />
-            +1 (800) 555-0199
-          </p>
-
-          <div className="bg-white/5 p-8 rounded-2xl border border-white/10">
-            <h4 className="font-semibold mb-3">Operational Support Hours</h4>
-            <p className="text-gray-400">
-              24/7 Secure Monitoring & Customer Operations
-            </p>
-          </div>
-        </div>
+        </form>
       </section>
     </div>
   );

@@ -94,7 +94,7 @@ export default function JobApplication() {
   };
 
   return (
-    <div className="relative min-h-screen bg-[#0b0f19] text-white overflow-hidden">
+    <div className="relative min-h-screen bg-[#0b0f19] text-white overflow-hidden py-12">
       {/* Background Image */}
       <img
         src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=2000&q=80"
