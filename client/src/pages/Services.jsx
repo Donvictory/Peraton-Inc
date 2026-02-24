@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import { useCart } from "../contexts/CartContext";
 
 const servicesList = [
   { id: 1, name: "Secure Cloud Infrastructure" },
@@ -11,8 +10,6 @@ const servicesList = [
 ];
 
 export default function Services() {
-  const { cart, addToCart } = useCart();
-
   return (
     <div className="bg-[#0b0c0f] text-slate-200 overflow-hidden antialiased">
       {/* ================= HERO ================= */}
@@ -31,7 +28,7 @@ export default function Services() {
         <div className="relative z-10 max-w-4xl">
           <h1 className="text-4xl md:text-5xl font-semibold text-white mb-6 tracking-tight">
             Advanced Digital
-            <span className="text-[#d4af37]"> Capabilities & Services</span>
+            <span className="text-[#d4af37]"> Capabilities &amp; Services</span>
           </h1>
 
           <p className="text-lg text-slate-300 max-w-2xl mx-auto">
@@ -65,48 +62,12 @@ export default function Services() {
               </p>
 
               <div className="mt-auto">
-                {cart.some((item) => item.id === service.id) ? (
-                  <Link
-                    to="/cart"
-                    className="inline-flex items-center gap-2 text-sm font-semibold text-[#25D366] hover:underline"
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="16"
-                      height="16"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    >
-                      <polyline points="20 6 9 17 4 12"></polyline>
-                    </svg>
-                    Added to Cart
-                  </Link>
-                ) : (
-                  <button
-                    onClick={() => addToCart(service)}
-                    className="inline-flex items-center gap-2 text-sm font-semibold text-[#d4af37] hover:text-[#c19b2e] transition"
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="16"
-                      height="16"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    >
-                      <path d="M5 12h14"></path>
-                      <path d="M12 5v14"></path>
-                    </svg>
-                    Add to Cart
-                  </button>
-                )}
+                <Link
+                  to="/contact"
+                  className="inline-flex items-center gap-2 text-sm font-semibold text-[#d4af37] hover:text-[#c19b2e] transition"
+                >
+                  Learn More →
+                </Link>
               </div>
             </div>
           ))}
@@ -116,7 +77,7 @@ export default function Services() {
       {/* ================= CTA ================= */}
       <section className="py-24 text-center px-6">
         <h2 className="text-3xl font-semibold mb-6 text-white tracking-tight">
-          Let’s Build Secure Systems Together
+          Let's Build Secure Systems Together
         </h2>
 
         <Link
