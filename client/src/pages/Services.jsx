@@ -1,6 +1,18 @@
 import { Link } from "react-router-dom";
+import { useCart } from "../contexts/CartContext";
+
+const servicesList = [
+  { id: 1, name: "Secure Cloud Infrastructure" },
+  { id: 2, name: "High-Volume Data Entry" },
+  { id: 3, name: "Customer Operations Systems" },
+  { id: 4, name: "AI & Automation" },
+  { id: 5, name: "Cybersecurity Architecture" },
+  { id: 6, name: "Operational Analytics & Reporting" },
+];
 
 export default function Services() {
+  const { cart, addToCart } = useCart();
+
   return (
     <div className="bg-[#0b0c0f] text-slate-200 overflow-hidden antialiased">
       {/* ================= HERO ================= */}
@@ -32,18 +44,12 @@ export default function Services() {
       {/* ================= SERVICES GRID ================= */}
       <section className="py-24 px-6 max-w-7xl mx-auto">
         <div className="grid md:grid-cols-3 gap-8">
-          {[
-            "Secure Cloud Infrastructure",
-            "High-Volume Data Entry",
-            "Customer Operations Systems",
-            "AI & Automation",
-            "Cybersecurity Architecture",
-            "Operational Analytics & Reporting",
-          ].map((service, index) => (
+          {servicesList.map((service) => (
             <div
-              key={index}
+              key={service.id}
               className="bg-[#12141a]
               p-8 rounded-xl
+              flex flex-col
               border border-white/5
               hover:border-[#d4af37]/40
               transition-all duration-300
@@ -51,12 +57,57 @@ export default function Services() {
               hover:shadow-[0_20px_60px_rgba(0,0,0,0.6)]"
             >
               <h3 className="text-lg font-semibold mb-3 text-white">
-                {service}
+                {service.name}
               </h3>
-              <p className="text-slate-400">
+              <p className="text-slate-400 mb-6 flex-grow">
                 Enterprise-grade systems built to operate securely, efficiently,
                 and at scale.
               </p>
+
+              <div className="mt-auto">
+                {cart.some((item) => item.id === service.id) ? (
+                  <Link
+                    to="/cart"
+                    className="inline-flex items-center gap-2 text-sm font-semibold text-[#25D366] hover:underline"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                    Added to Cart
+                  </Link>
+                ) : (
+                  <button
+                    onClick={() => addToCart(service)}
+                    className="inline-flex items-center gap-2 text-sm font-semibold text-[#d4af37] hover:text-[#c19b2e] transition"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <path d="M5 12h14"></path>
+                      <path d="M12 5v14"></path>
+                    </svg>
+                    Add to Cart
+                  </button>
+                )}
+              </div>
             </div>
           ))}
         </div>

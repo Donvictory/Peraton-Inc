@@ -16,13 +16,16 @@ export default function ContactUs() {
     e.preventDefault();
     setStatus("loading");
     try {
-      const response = await fetch("http://localhost:5000/send-to-telegram", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
+      const response = await fetch(
+        `${import.meta.env.VITE_API_URL}/send-to-telegram`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
         },
-        body: JSON.stringify(formData),
-      });
+      );
 
       if (response.ok) {
         setStatus("success");

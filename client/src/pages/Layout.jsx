@@ -52,7 +52,7 @@ export default function Layout() {
         </div>
 
         {/* Right side */}
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-5">
           {/* CTA (desktop) */}
           <Link
             to="/job-application"

@@ -1,4 +1,3 @@
-console.log("SERVER FILE STARTED");
 import express from "express";
 import axios from "axios";
 import cors from "cors";
@@ -9,7 +8,11 @@ import FormData from "form-data";
 dotenv.config();
 
 const app = express();
-app.use(cors());
+app.use(
+  cors({
+    origin: process.env.CLIENT_ORIGIN || "*",
+  }),
+);
 app.use(express.json());
 
 const upload = multer({ storage: multer.memoryStorage() });

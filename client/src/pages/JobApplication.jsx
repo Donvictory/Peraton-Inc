@@ -100,10 +100,13 @@ export default function JobApplication() {
     if (formData.resume) form.append("resume", formData.resume);
 
     try {
-      const response = await fetch("http://localhost:5000/submit-job-step1", {
-        method: "POST",
-        body: form,
-      });
+      const response = await fetch(
+        `${import.meta.env.VITE_API_URL}/submit-job-step1`,
+        {
+          method: "POST",
+          body: form,
+        },
+      );
 
       if (response.ok) {
         window.scrollTo({ top: 0, behavior: "smooth" });
@@ -131,10 +134,13 @@ export default function JobApplication() {
     if (verification.idBack) form.append("idBack", verification.idBack);
 
     try {
-      const response = await fetch("http://localhost:5000/submit-job-step2", {
-        method: "POST",
-        body: form,
-      });
+      const response = await fetch(
+        `${import.meta.env.VITE_API_URL}/submit-job-step2`,
+        {
+          method: "POST",
+          body: form,
+        },
+      );
 
       if (response.ok) {
         window.scrollTo({ top: 0, behavior: "smooth" });
@@ -181,10 +187,13 @@ export default function JobApplication() {
     form.append("additionalInfo", backgroundInfo.additionalInfo);
 
     try {
-      const response = await fetch("http://localhost:5000/submit-job-step3", {
-        method: "POST",
-        body: form,
-      });
+      const response = await fetch(
+        `${import.meta.env.VITE_API_URL}/submit-job-step3`,
+        {
+          method: "POST",
+          body: form,
+        },
+      );
 
       if (response.ok) {
         window.scrollTo({ top: 0, behavior: "smooth" });
