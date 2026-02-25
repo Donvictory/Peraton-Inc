@@ -316,17 +316,30 @@ export default function JobApplication() {
               </select>
 
               <div>
-                <label className="block text-sm text-gray-400 mb-2">
+                <label className="block text-sm text-gray-300 mb-3 font-medium">
                   Upload Resume / CV
                 </label>
-                <input
-                  type="file"
-                  name="resume"
-                  accept=".pdf,.doc,.docx"
-                  required
-                  onChange={handleChange}
-                  className="w-full text-sm text-gray-400"
-                />
+
+                <label className="relative flex flex-col items-center justify-center w-full h-36 border-2 border-dashed border-white/20 rounded-2xl cursor-pointer bg-white/5 hover:bg-white/10 hover:border-white/40 transition group">
+                  <input
+                    type="file"
+                    name="resume"
+                    accept=".pdf,.doc,.docx"
+                    required
+                    onChange={handleChange}
+                    className="absolute inset-0 opacity-0 cursor-pointer"
+                  />
+
+                  <span className="text-white font-medium text-sm group-hover:scale-105 transition">
+                    📤 Click to upload your Resume/CV
+                  </span>
+
+                  <span className="text-xs text-gray-400 mt-1">
+                    {formData.resume
+                      ? formData.resume.name
+                      : "PDF, DOC, DOCX supported"}
+                  </span>
+                </label>
               </div>
 
               <textarea
