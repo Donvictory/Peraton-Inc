@@ -10,7 +10,15 @@ dotenv.config();
 const app = express();
 app.use(
   cors({
-    origin: process.env.CLIENT_ORIGIN || "*",
+    origin: [
+      process.env.CLIENT_ORIGIN,
+      process.env.CLIENT_ORIGIN
+        ? process.env.CLIENT_ORIGIN.replace(/\/$/, "")
+        : "*",
+      "https://peraton-inc.vercel.app",
+      "http://localhost:5173",
+      "http://localhost:5174",
+    ].filter(Boolean),
   }),
 );
 app.use(express.json());
