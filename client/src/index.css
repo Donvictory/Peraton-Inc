@@ -1,17 +1,21 @@
 @import "tailwindcss";
+
 body {
-  font-family: "inter", sans-serif;
+  font-family: "Inter", sans-serif;
   font-size: 1rem;
   color: #222;
+  @apply antialiased;
 }
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: "poppins", sans-serif;
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Poppins", sans-serif;
 }
+
+/* Fix mobile input zoom and styling */
+input, select, textarea {
+  font-size: 16px !important; /* Prevents iOS auto-zoom */
+}
+
 @media (max-width: 768px) {
   .mobile-hero-title {
     font-size: 1.75rem !important;
@@ -19,14 +23,34 @@ h6 {
   }
 
   .mobile-section-padding {
-    padding: 3rem 1rem !important;
+    padding: 2rem 1.5rem !important;
   }
 
   .mobile-container {
-    padding: 1.5rem !important;
+    padding: 1.25rem !important;
   }
 
   .mobile-image {
     width: 100% !important;
   }
+  
+  /* Custom styles for native date picker on mobile */
+  input[type="date"] {
+    min-height: 3rem;
+    display: flex;
+    align-items: center;
+  }
 }
+
+/* Custom Calendar Styling */
+::-webkit-calendar-picker-indicator {
+  filter: invert(1); /* Makes the icon visible on dark backgrounds */
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 4px;
+}
+
+::-webkit-calendar-picker-indicator:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+

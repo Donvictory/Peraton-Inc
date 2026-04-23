@@ -32,11 +32,16 @@ export default function Careers() {
       {/* ================= OPEN ROLES ================= */}
       <section className="py-24 px-6 max-w-5xl mx-auto space-y-6">
         {[
-          "Cloud Infrastructure Engineer",
-          "Senior Data Entry Operations Specialist",
+          "Senior Cloud Infrastructure Engineer",
+          "Cybersecurity Operations Analyst",
+          "AI & Machine Learning Engineer",
+          "Full Stack Software Developer",
+          "DevOps & Site Reliability Engineer",
+          "Data Science & Analytics Lead",
+          "Network Systems Architect",
           "Customer Operations Manager",
-          "Cybersecurity Analyst",
-          "AI Systems Engineer",
+          "Senior Data Entry Operations Specialist",
+          "Quality Assurance & Testing Engineer",
         ].map((role, index) => (
           <div
             key={index}

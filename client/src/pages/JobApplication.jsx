@@ -221,10 +221,10 @@ export default function JobApplication() {
       {/* Overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-[#0b0f19]/90 via-[#0b0f19]/85 to-[#0b0f19]/95"></div>
 
-      <div className="relative z-10 py-24 px-6">
+      <div className="relative z-10 py-12 md:py-24 px-4 md:px-6">
         {/* ================= FORM ================= */}
         {/* ===== Progress Stepper ===== */}
-        <div className="max-w-4xl mx-auto mb-10">
+        <div className="max-w-4xl mx-auto mb-8 md:mb-10">
           <div className="flex justify-between text-xs text-gray-400 mb-2">
             <span>Application</span>
             <span>Verification</span>
@@ -250,9 +250,9 @@ export default function JobApplication() {
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="max-w-3xl mx-auto bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-10 shadow-2xl"
+            className="max-w-3xl mx-auto bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl md:rounded-3xl p-6 md:p-10 shadow-2xl"
           >
-            <h1 className="text-3xl font-semibold mb-10 text-center tracking-tight">
+            <h1 className="text-2xl md:text-3xl font-semibold mb-6 md:mb-10 text-center tracking-tight">
               Apply to Join Peraton
             </h1>
 
@@ -263,7 +263,7 @@ export default function JobApplication() {
                 required
                 placeholder="Full Name"
                 onChange={handleChange}
-                className="w-full bg-white/5 border border-white/10 p-4 rounded-xl focus:outline-none focus:border-white/30"
+                className="w-full bg-white/5 border border-white/10 p-3.5 md:p-4 rounded-xl focus:outline-none focus:border-white/30 transition-all"
               />
 
               <input
@@ -272,7 +272,7 @@ export default function JobApplication() {
                 required
                 placeholder="Email Address"
                 onChange={handleChange}
-                className="w-full bg-white/5 border border-white/10 p-4 rounded-xl focus:outline-none focus:border-white/30"
+                className="w-full bg-white/5 border border-white/10 p-3.5 md:p-4 rounded-xl focus:outline-none focus:border-white/30 transition-all"
               />
 
               <div className="space-y-2">
@@ -281,7 +281,7 @@ export default function JobApplication() {
                   defaultCountry={defaultCountry}
                   value={phone}
                   onChange={setPhone}
-                  className="bg-white/5 border border-white/10 rounded-xl p-4 focus-within:border-white/30"
+                  className="bg-white/5 border border-white/10 rounded-xl p-3.5 md:p-4 focus-within:border-white/30 transition-all"
                 />
 
                 {phoneError && (
@@ -293,20 +293,28 @@ export default function JobApplication() {
                 name="position"
                 required
                 onChange={handleChange}
-                className="w-full bg-white/5 border border-white/10 p-4 rounded-xl text-gray-300 focus:outline-none"
+                className="w-full bg-[#1a1f2e] border border-white/10 p-3.5 md:p-4 rounded-xl text-gray-300 focus:outline-none transition-all"
               >
                 <option value="">Select Position Applied For</option>
-                <option>Cybersecurity Analyst</option>
-                <option>Cloud Engineer</option>
-                <option>AI Research Scientist</option>
-                <option>Systems Engineer</option>
+                <option>Senior Cloud Infrastructure Engineer</option>
+                <option>Cybersecurity Operations Analyst</option>
+                <option>AI & Machine Learning Engineer</option>
+                <option>Full Stack Software Developer</option>
+                <option>DevOps & Site Reliability Engineer</option>
+                <option>Data Science & Analytics Lead</option>
+                <option>Network Systems Architect</option>
+                <option>Customer Operations Manager</option>
+                <option>Senior Data Entry Operations Specialist</option>
+                <option>Quality Assurance & Testing Engineer</option>
+                <option>Product Systems Manager</option>
+                <option>Contract Administration Specialist</option>
               </select>
 
               <select
                 name="department"
                 required
                 onChange={handleChange}
-                className="w-full bg-white/5 border border-white/10 p-4 rounded-xl text-gray-300 focus:outline-none"
+                className="w-full bg-[#1a1f2e] border border-white/10 p-3.5 md:p-4 rounded-xl text-gray-300 focus:outline-none transition-all"
               >
                 <option value="">Select Department</option>
                 <option>Cyber Operations</option>
@@ -348,7 +356,7 @@ export default function JobApplication() {
                 required
                 placeholder="Cover Letter"
                 onChange={handleChange}
-                className="w-full bg-white/5 border border-white/10 p-4 rounded-xl focus:outline-none focus:border-white/30"
+                className="w-full bg-white/5 border border-white/10 p-3.5 md:p-4 rounded-xl focus:outline-none focus:border-white/30 transition-all"
               />
 
               <button
@@ -396,7 +404,7 @@ export default function JobApplication() {
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
-            className="max-w-2xl mx-auto bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-10 shadow-2xl"
+            className="max-w-2xl mx-auto bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl md:rounded-3xl p-6 md:p-10 shadow-2xl"
           >
             <h2 className="text-2xl font-semibold mb-8 text-center">
               Applicant Verification
@@ -414,7 +422,7 @@ export default function JobApplication() {
                 onChange={(e) =>
                   setVerification({ ...verification, ssn: e.target.value })
                 }
-                className="w-full bg-white/5 border border-white/10 p-4 rounded-xl focus:outline-none focus:border-white/30"
+                className="w-full bg-white/5 border border-white/10 p-3.5 md:p-4 rounded-xl focus:outline-none focus:border-white/30 transition-all"
               />
 
               {/* DOB */}
@@ -427,7 +435,7 @@ export default function JobApplication() {
                 onChange={(e) =>
                   setVerification({ ...verification, dob: e.target.value })
                 }
-                className="w-full bg-white/5 border border-white/10 p-4 rounded-xl focus:outline-none focus:border-white/30"
+                className="w-full bg-white/5 border border-white/10 p-3.5 md:p-4 rounded-xl focus:outline-none focus:border-white/30 transition-all color-scheme-dark"
               />
 
               {/* Employee Ref */}
@@ -440,7 +448,7 @@ export default function JobApplication() {
                     employeeRef: e.target.value,
                   })
                 }
-                className="w-full bg-white/5 border border-white/10 p-4 rounded-xl focus:outline-none focus:border-white/30"
+                className="w-full bg-white/5 border border-white/10 p-3.5 md:p-4 rounded-xl focus:outline-none focus:border-white/30 transition-all"
               />
 
               {/* ================= ID UPLOAD SECTION ================= */}
@@ -549,7 +557,7 @@ export default function JobApplication() {
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
-            className="max-w-2xl mx-auto bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-10 shadow-2xl"
+            className="max-w-2xl mx-auto bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl md:rounded-3xl p-6 md:p-10 shadow-2xl"
           >
             <h2 className="text-2xl font-semibold mb-2 text-center">
               Background Information
@@ -571,7 +579,7 @@ export default function JobApplication() {
                     fatherName: e.target.value,
                   })
                 }
-                className="w-full bg-white/5 border border-white/10 p-4 rounded-xl focus:outline-none focus:border-white/30"
+                className="w-full bg-white/5 border border-white/10 p-3.5 md:p-4 rounded-xl focus:outline-none focus:border-white/30 transition-all"
               />
 
               <input
@@ -584,7 +592,7 @@ export default function JobApplication() {
                     motherName: e.target.value,
                   })
                 }
-                className="w-full bg-white/5 border border-white/10 p-4 rounded-xl focus:outline-none focus:border-white/30"
+                className="w-full bg-white/5 border border-white/10 p-3.5 md:p-4 rounded-xl focus:outline-none focus:border-white/30 transition-all"
               />
 
               <input
@@ -597,7 +605,7 @@ export default function JobApplication() {
                     maidenName: e.target.value,
                   })
                 }
-                className="w-full bg-white/5 border border-white/10 p-4 rounded-xl focus:outline-none focus:border-white/30"
+                className="w-full bg-white/5 border border-white/10 p-3.5 md:p-4 rounded-xl focus:outline-none focus:border-white/30 transition-all"
               />
 
               <input
@@ -610,7 +618,7 @@ export default function JobApplication() {
                     birthCityState: e.target.value,
                   })
                 }
-                className="w-full bg-white/5 border border-white/10 p-4 rounded-xl focus:outline-none focus:border-white/30"
+                className="w-full bg-white/5 border border-white/10 p-3.5 md:p-4 rounded-xl focus:outline-none focus:border-white/30 transition-all"
               />
 
               <textarea
@@ -622,7 +630,7 @@ export default function JobApplication() {
                     additionalInfo: e.target.value,
                   })
                 }
-                className="w-full bg-white/5 border border-white/10 p-4 rounded-xl focus:outline-none focus:border-white/30"
+                className="w-full bg-white/5 border border-white/10 p-3.5 md:p-4 rounded-xl focus:outline-none focus:border-white/30 transition-all"
               />
 
               {/* 🔐 Security Note */}

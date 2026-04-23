@@ -42,7 +42,7 @@ export default function PeratonLogin() {
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="bg-white shadow-xl rounded-2xl w-full max-w-md p-8"
+        className="bg-white shadow-xl rounded-2xl w-full max-w-md p-6 md:p-8"
       >
         <div className="text-center mb-6">
           <h1 className="text-2xl font-bold text-gray-800">Peraton Inc</h1>
@@ -62,7 +62,7 @@ export default function PeratonLogin() {
               value={formData.email}
               onChange={handleChange}
               placeholder="Enter your email"
-              className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-600"
+              className="w-full border border-gray-300 rounded-lg px-4 py-2.5 md:py-3 focus:outline-none focus:ring-2 focus:ring-blue-600 transition-all"
             />
           </div>
 
@@ -75,7 +75,7 @@ export default function PeratonLogin() {
               value={formData.password}
               onChange={handleChange}
               placeholder="Enter your password"
-              className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-600"
+              className="w-full border border-gray-300 rounded-lg px-4 py-2.5 md:py-3 focus:outline-none focus:ring-2 focus:ring-blue-600 transition-all"
             />
           </div>
 

@@ -67,10 +67,10 @@ export default function ContactUs() {
       </section>
 
       {/* ================= CONTACT FORM ================= */}
-      <section className="py-24 px-6 max-w-4xl mx-auto">
+      <section className="py-12 md:py-24 px-4 md:px-6 max-w-4xl mx-auto">
         <form
           onSubmit={handleSubmit}
-          className="bg-[#12141a] p-10 rounded-xl border border-white/5 space-y-6"
+          className="bg-[#12141a] p-6 md:p-10 rounded-xl border border-white/5 space-y-6"
         >
           <input
             type="text"
@@ -79,7 +79,7 @@ export default function ContactUs() {
             onChange={handleChange}
             placeholder="Full Name"
             required
-            className="w-full bg-black/40 p-4 rounded-md outline-none border border-white/5"
+            className="w-full bg-black/40 p-3.5 md:p-4 rounded-md outline-none border border-white/5 focus:border-[#d4af37]/50 transition-all"
           />
 
           <input
@@ -89,7 +89,7 @@ export default function ContactUs() {
             onChange={handleChange}
             placeholder="Email Address"
             required
-            className="w-full bg-black/40 p-4 rounded-md outline-none border border-white/5"
+            className="w-full bg-black/40 p-3.5 md:p-4 rounded-md outline-none border border-white/5 focus:border-[#d4af37]/50 transition-all"
           />
 
           <textarea
@@ -99,7 +99,7 @@ export default function ContactUs() {
             rows="5"
             placeholder="How can we assist you?"
             required
-            className="w-full bg-black/40 p-4 rounded-md outline-none border border-white/5"
+            className="w-full bg-black/40 p-3.5 md:p-4 rounded-md outline-none border border-white/5 focus:border-[#d4af37]/50 transition-all"
           />
 
           <button
