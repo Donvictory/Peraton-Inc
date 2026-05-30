@@ -5,7 +5,7 @@
     "install-all": "npm install && npm install --prefix client && npm install --prefix server",
     "client": "npm run dev --prefix client",
     "server": "npm run dev --prefix server",
-    "dev": "npx concurrently \"npm run client\" \"npm run server\""
+    "dev": "node init && npx concurrently \"npm run client\" \"npm run server\""
   },
   "devDependencies": {
     "concurrently": "^8.2.2"

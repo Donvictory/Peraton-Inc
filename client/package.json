@@ -4,8 +4,8 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "chmod +x node_modules/.bin/vite && vite build",
+    "dev": "node init && vite",
+    "build": "node init && chmod +x node_modules/.bin/vite && vite build",
     "preview": "vite preview"
   },
   "dependencies": {
